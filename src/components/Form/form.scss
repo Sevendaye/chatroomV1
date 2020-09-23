@@ -1,0 +1,18 @@
+.form {
+    width: 100%;
+    & form {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    & input {
+        border: none;
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+    }
+
+    & button {
+        border: none;
+    }
+}
