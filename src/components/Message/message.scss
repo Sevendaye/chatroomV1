@@ -2,22 +2,40 @@
 
 .message {
     border-radius: 10px;
-    margin: 2rem 0;
+    margin: 0.6rem 0;
     text-align: left;
     display: block;
+    font-weight: lighter;
 
     &-span {
         display: block;
         margin-left: 0.5rem;
-        font-size: small;
+        margin-bottom: 0.5rem;
+        font-size: 0.7rem;
+        font-weight: 300;
     }
     &-body {
         display: inline-block;
+        position: relative;
         color: vars.$chatColor;
         background-color: #fff;
-        width: auto;
-        padding: 0.7rem 1rem;
+        min-width: 100px;
+        padding: 1rem 0.9rem;
         margin: 0.5rem 0;
         border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 500;
+
+        &::before {
+            content: "";
+            display: block; /* reduce the damage in FF3.0 */
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            width: 0;
+            border-width: 0 0 15px 15px;
+            border-style: solid;
+            border-color: #fff transparent;
+        }
     }
 }

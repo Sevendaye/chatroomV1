@@ -8,7 +8,7 @@ import Messages from 'src/components/containers/Messages';
 
 // == Composant
 const App = () => (
-  <div className="app" style={{ backgroundColor: 'rgb(195, 219, 238)' }}>
+  <div className="app">
     <Messages />
     <Form />
   </div>

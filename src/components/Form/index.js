@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import TelegramIcon from '@material-ui/icons/Telegram';
+
 import './form.scss';
 
 const Form = ({ sendMessage }) => {
@@ -31,7 +33,9 @@ const Form = ({ sendMessage }) => {
           value={inputValue}
           onChange={handleChange}
         />
-        <button onClick={onSendMessage} type="button">{'>'}</button>
+        <button onClick={onSendMessage} type="button">
+          <TelegramIcon />
+        </button>
       </form>
     </div>
   );

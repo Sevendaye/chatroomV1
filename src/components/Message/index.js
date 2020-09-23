@@ -6,6 +6,7 @@ import './message.scss';
 const Message = ({ messageValue }) => (
   <div className="message">
     <span className="message-span">Super Chat</span>
+    <div className="message-bulle" />
     <div className="message-body">{messageValue}</div>
   </div>
 );

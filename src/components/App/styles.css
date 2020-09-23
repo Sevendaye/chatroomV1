@@ -2,8 +2,6 @@
   width: 500px;
   margin: 1em auto;
   text-align: center;
-}
-
-.app img {
-  max-width: 150px;
+  background-color: rgb(195, 219, 238);
+  max-height: '800px';
 }

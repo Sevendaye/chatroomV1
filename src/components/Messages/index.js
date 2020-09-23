@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Message from 'src/components/Message';
 
 const Messages = ({ monState }) => (
-  <div style={{ padding: '1rem' }}>
-    {monState.map((message) => <Message messageValue={message.body} />)}
+  <div style={{ padding: '1rem', maxHeight: '700px', overflow: 'scroll' }}>
+    {monState.map((message) => <Message key={`mes-${message.id}`} messageValue={message.body} />)}
   </div>
 );
 
