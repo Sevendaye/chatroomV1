@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Message from 'src/components/Message';
+import './messages.scss';
 
 const Messages = ({ monState }) => (
-  <div style={{ padding: '1rem', maxHeight: '700px', overflow: 'scroll' }}>
+  <div className="messages">
     {monState.map((message) => <Message key={`mes-${message.id}`} messageValue={message.body} />)}
   </div>
 );
