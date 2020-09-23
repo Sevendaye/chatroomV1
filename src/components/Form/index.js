@@ -14,13 +14,17 @@ const Form = ({ sendMessage }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    sendMessage(inputValue);
-    setInputValue('');
+    if (inputValue.trim() !== '') {
+      sendMessage(inputValue);
+      setInputValue('');
+    }
   };
 
   const onSendMessage = () => {
-    sendMessage(inputValue);
-    setInputValue('');
+    if (inputValue.trim() !== '') {
+      sendMessage(inputValue);
+      setInputValue('');
+    }
   };
 
   return (
