@@ -4,18 +4,40 @@
     right: 0;
     margin-right: 2rem;
 
-    &-close {
+    &-btn {
+        color: #668ad8;
+        font-weight: bold;
+        font-size: 2rem;
         width: 40px;
         height: 40px;
         border-radius: 50%;
-        box-shadow: 2px 2px 8px #aaa;
-        color: blueviolet;
+        border: solid 1px #668ad8;
+        overflow: hidden;
+        transform: rotate(0deg);
+        transition: all ease 1s;
+
+        &-close {
+            color: #668ad8;
+            font-weight: bold;
+            font-size: 2.1rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: solid 1px #668ad8;
+            overflow: hidden;
+            transform: rotate(90deg);
+            transition: all ease 1s;
+        }
     }
 
     &-form-hidden {
         opacity: 0;
         margin-right: -200px;
         transition: all ease 0.4s;
+
+        .settings-close {
+            transform: rotate(180deg);
+        }
     }
 
     &-form-notHidden {

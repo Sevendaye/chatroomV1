@@ -21,7 +21,7 @@ const Settings = ({ email, password, inputEmailChange, inputPasswordChange }) =>
   return (
     <div className="settings">
       <div>
-        <button className="settings-close" type="button" onClick={handleClose}>X</button>
+        <button className={!isHidden ? 'settings-btn' : 'settings-btn-close'} type="button" onClick={handleClose}>+</button>
       </div>
       <div className={isHidden ? 'settings-form-hidden' : 'settings-form-notHidden'}>
         <form className="settings-form">
