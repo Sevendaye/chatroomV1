@@ -14,7 +14,7 @@
         border: solid 1px #668ad8;
         overflow: hidden;
         transform: rotate(0deg);
-        transition: all ease 1s;
+        transition: all ease 0.5s;
 
         &-close {
             color: #668ad8;
@@ -26,7 +26,11 @@
             border: solid 1px #668ad8;
             overflow: hidden;
             transform: rotate(90deg);
-            transition: all ease 1s;
+            transition: all ease 0.5s;
+        }
+
+        &:hover {
+            background: #b3e1ff;
         }
     }
 
