@@ -5,12 +5,16 @@ import React from 'react';
 import './styles.css';
 import Form from 'src/components/containers/Form';
 import Messages from 'src/components/containers/Messages';
+import Settings from 'src/components/containers/Settings';
 
 // == Composant
 const App = () => (
-  <div className="app">
-    <Messages />
-    <Form />
+  <div>
+    <Settings />
+    <div className="app">
+      <Messages />
+      <Form />
+    </div>
   </div>
 );
 

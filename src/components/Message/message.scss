@@ -4,7 +4,20 @@
     border-radius: 10px;
     margin: 0.6rem 0;
     text-align: left;
-    display: block;
+
+    &-owner {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .message-span {
+            margin-right: 6rem;
+        }
+
+        .message-body {
+            margin-right: 2rem;
+        }
+    }
 
     &-span {
         display: block;

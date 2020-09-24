@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import TelegramIcon from '@material-ui/icons/Telegram';
@@ -7,6 +7,14 @@ import './form.scss';
 
 const Form = ({ sendMessage }) => {
   const [inputValue, setInputValue] = useState('');
+  // Permet d'avoir une réference sur l'input
+  const inputRef = useRef(null);
+
+  // Permet d'avoir le focus sur l'input
+  // au chargement de la page
+  useEffect(() => {
+    inputRef.current.focus();
+  }, [inputRef]);
 
   const handleChange = (event) => {
     setInputValue(event.target.value);
@@ -36,12 +44,13 @@ const Form = ({ sendMessage }) => {
           placeholder="Saisissez votre message..."
           value={inputValue}
           onChange={handleChange}
+          ref={inputRef}
         />
         <button onClick={onSendMessage} type="button">
           <TelegramIcon />
         </button>
       </form>
-    </div>
+    </div >
   );
 };
 

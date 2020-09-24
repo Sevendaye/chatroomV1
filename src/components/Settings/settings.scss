@@ -1,0 +1,51 @@
+.settings {
+    position: fixed;
+    display: flex;
+    right: 0;
+    margin-right: 2rem;
+
+    &-close {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 2px 2px 8px #aaa;
+        color: blueviolet;
+    }
+
+    &-form-hidden {
+        opacity: 0;
+        margin-right: -200px;
+        transition: all ease 0.4s;
+    }
+
+    &-form-notHidden {
+        opacity: 1;
+    }
+
+    &-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 120px;
+        margin-left: 1rem;
+
+        & input[type="email"] {
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: none;
+        }
+        & input[type="password"] {
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: none;
+        }
+
+        & button {
+            height: 40px;
+            border: none;
+            border-radius: 6px;
+            background-color: blueviolet;
+            color: #fff;
+        }
+    }
+}

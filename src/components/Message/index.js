@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import './message.scss';
 
-const Message = ({ messageValue }) => (
-  <div className="message">
-    <span className="message-span">Super Chat</span>
-    <div className="message-bulle" />
-    <div className="message-body">{messageValue}</div>
+const Message = ({ messageBody, messageAuthor, owner }) => (
+  <div className={classNames('message', { 'message-owner': owner })}>
+    <span className="message-span">{messageAuthor}</span>
+    <div className="message-body">{messageBody}</div>
   </div>
 );
 
+Message.defaultProps = {
+  owner: false,
+};
+
 Message.propTypes = {
-  messageValue: PropTypes.string.isRequired,
+  messageBody: PropTypes.string.isRequired,
+  messageAuthor: PropTypes.string.isRequired,
+  owner: PropTypes.bool,
 };
 export default Message;

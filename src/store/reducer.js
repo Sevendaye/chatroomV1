@@ -1,21 +1,47 @@
 /* eslint-disable indent */
+import getHighestId from 'src/selector/utils';
 import * as actions from './actions';
 
-const initialState = [];
+const initialState = {
+  user: {
+    email: '',
+    password: '',
+  },
+  author: 'Toto',
+  messages: [],
+};
 
-let id = 0;
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case actions.SEND_MESSAGE:
-      // eslint-disable-next-line no-plusplus
-      id = ++id;
-      return [
+      return {
         ...state,
-        {
-          id: id,
-          body: action.message,
+        messages: [
+          ...state.messages,
+          {
+            id: getHighestId(state.messages),
+            author: state.author,
+            body: action.message,
+            owner: true,
+          },
+        ],
+      };
+    case actions.INPUT_EMAIL_CHANGE:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          email: action.email,
         },
-      ];
+      };
+    case actions.INPUT_PASSWORD_CHANGE:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          password: action.password,
+        },
+      };
     default:
       return state;
   }
