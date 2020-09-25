@@ -3,12 +3,14 @@ import getHighestId from 'src/selector/utils';
 import * as actions from './actions';
 
 const initialState = {
-  user: {
-    email: '',
-    password: '',
-  },
   author: 'Toto',
   messages: [],
+  settings: {
+    user_email: '',
+    user_password: '',
+    display: true,
+    loading: false,
+  },
 };
 
 const reducer = (state = initialState, action = {}) => {
@@ -26,20 +28,37 @@ const reducer = (state = initialState, action = {}) => {
           },
         ],
       };
-    case actions.INPUT_EMAIL_CHANGE:
+    case actions.CHANGE_FIELD_VALUE:
       return {
         ...state,
-        user: {
-          ...state.user,
-          email: action.email,
+        settings: {
+          ...state.settings,
+          [action.name]: action.value,
         },
       };
-    case actions.INPUT_PASSWORD_CHANGE:
+    case actions.CHANGE_SETTINGS_HIDDEN:
       return {
         ...state,
-        user: {
-          ...state.user,
-          password: action.password,
+        settings: {
+          ...state.settings,
+          display: !state.settings.display,
+        },
+      };
+    case actions.SET_LOADING_STATE:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          loading: action.loading,
+        },
+      };
+    case actions.CONNECT_USER:
+      return {
+        ...state,
+        author: action.pseudo,
+        settings: {
+          ...state.settings,
+          display: false,
         },
       };
     default:

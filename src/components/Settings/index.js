@@ -1,53 +1,52 @@
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React from 'react';
 import PropTypes from 'prop-types';
+
+import Field from 'src/components/containers/Field';
+import { X } from 'react-feather';
 
 import './settings.scss';
 
-const Settings = ({ email, password, inputEmailChange, inputPasswordChange }) => {
-  const [isHidden, setIsHidden] = useState(false);
-
-  const handleClose = () => {
-    setIsHidden(!isHidden);
-  };
-
-  const onEmailChange = (event) => {
-    inputEmailChange(event.target.value);
-  };
-
-  const onPasswordChange = (event) => {
-    inputPasswordChange(event.target.value);
+const Settings = ({ settingsHidden, loading, submitLogin, toggleSettingsHidden }) => {
+  const handleConnection = (event) => {
+    event.preventDefault();
+    submitLogin();
   };
 
   return (
     <div className="settings">
       <div>
-        <button className={!isHidden ? 'settings-btn' : 'settings-btn-close'} type="button" onClick={handleClose}>+</button>
+        <button className={settingsHidden ? 'settings-btn' : 'settings-btn-close'} type="button" onClick={toggleSettingsHidden}><X /></button>
       </div>
-      <div className={isHidden ? 'settings-form-hidden' : 'settings-form-notHidden'}>
-        <form className="settings-form">
-          <input
+      <div className={!settingsHidden ? 'settings-form-hidden' : 'settings-form-notHidden'}>
+        <form className="settings-form" onSubmit={handleConnection}>
+          <Field
+            inputName="user_email"
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(event) => onEmailChange(event)}
           />
-          <input
+          <Field
+            inputName="user_password"
             type="password"
             placeholder="Mot de passe"
-            value={password}
-            onChange={(event) => onPasswordChange(event)}
           />
-          <button type="submit">Envoyer</button>
+          <button type="submit" disabled={loading} onClick={handleConnection}>
+            {loading ? 'Chargement...' : 'Envoyer'}
+          </button>
         </form>
       </div>
     </div>
   );
 };
 
+Settings.defaultProps = {
+  loading: false,
+};
+
 Settings.propTypes = {
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
-  inputEmailChange: PropTypes.func.isRequired,
-  inputPasswordChange: PropTypes.func.isRequired,
+  settingsHidden: PropTypes.bool.isRequired,
+  toggleSettingsHidden: PropTypes.func.isRequired,
+  submitLogin: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 };
 export default Settings;

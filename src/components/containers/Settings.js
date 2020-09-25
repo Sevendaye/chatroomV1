@@ -1,16 +1,17 @@
 import Settings from 'src/components/Settings';
 import { connect } from 'react-redux';
 
-import { inputEmailChange, inputPasswordChange } from 'src/store/actions';
+import { toggleSettingsHidden, setLoadingState, submitLogin } from 'src/store/actions';
 
 const mapStateToProps = (state) => ({
-  email: state.user.email,
-  password: state.user.password,
+  settingsHidden: state.settings.display,
+  loading: state.settings.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  inputEmailChange: (email) => dispatch(inputEmailChange(email)),
-  inputPasswordChange: (password) => dispatch(inputPasswordChange(password)),
+  toggleSettingsHidden: () => dispatch(toggleSettingsHidden()),
+  submitLogin: () => dispatch(submitLogin()),
+  setLoadingState: (loading) => dispatch(setLoadingState(loading)),
 });
 
 const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);

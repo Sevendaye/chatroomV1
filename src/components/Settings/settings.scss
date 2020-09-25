@@ -12,36 +12,24 @@
         height: 40px;
         border-radius: 50%;
         border: solid 1px #668ad8;
-        overflow: hidden;
         transform: rotate(0deg);
         transition: all ease 0.5s;
-
-        &-close {
-            color: #668ad8;
-            font-weight: bold;
-            font-size: 2.1rem;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: solid 1px #668ad8;
-            overflow: hidden;
-            transform: rotate(90deg);
-            transition: all ease 0.5s;
-        }
 
         &:hover {
             background: #b3e1ff;
         }
     }
 
+    &-btn-close {
+        @extend .settings-btn;
+        transform: rotate(90deg);
+        transition: all ease 0.5s;
+    }
+
     &-form-hidden {
         opacity: 0;
         margin-right: -200px;
         transition: all ease 0.4s;
-
-        .settings-close {
-            transform: rotate(180deg);
-        }
     }
 
     &-form-notHidden {

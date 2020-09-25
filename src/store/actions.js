@@ -1,8 +1,9 @@
 export const SEND_MESSAGE = 'SEND MESSAGE';
-
-export const INPUT_EMAIL_CHANGE = 'INPUT_EMAIL_CHANGE';
-export const INPUT_PASSWORD_CHANGE = 'INPUT_PASSWORD_CHANGE';
-
+export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
+export const CHANGE_SETTINGS_HIDDEN = 'CHANGE_SETTINGS_HIDDEN';
+export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
+export const CONNECT_USER = 'CONNECT_USER';
+export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 // Action creators
 
 export const sendMessage = (message) => ({
@@ -10,12 +11,27 @@ export const sendMessage = (message) => ({
   message,
 });
 
-export const inputEmailChange = (email) => ({
-  type: INPUT_EMAIL_CHANGE,
-  email,
+export const toggleSettingsHidden = (hidden) => ({
+  type: CHANGE_SETTINGS_HIDDEN,
+  hidden,
 });
 
-export const inputPasswordChange = (password) => ({
-  type: INPUT_PASSWORD_CHANGE,
-  password,
+export const changeFieldValue = (name, value) => ({
+  type: CHANGE_FIELD_VALUE,
+  name,
+  value,
+});
+
+export const submitLogin = () => ({
+  type: SUBMIT_LOGIN,
+});
+
+export const connectUser = ({ pseudo }) => ({
+  type: CONNECT_USER,
+  pseudo,
+});
+
+export const setLoadingState = ({ loading }) => ({
+  type: SET_LOADING_STATE,
+  loading,
 });
