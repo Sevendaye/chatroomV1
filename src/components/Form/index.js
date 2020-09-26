@@ -1,14 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
-
 import TelegramIcon from '@material-ui/icons/Telegram';
 
 import './form.scss';
 
-const Form = ({ sendMessage }) => {
+const Form = ({ messages, sendMessage, emitMessage, receiveMessage }) => {
   const [inputValue, setInputValue] = useState('');
+
   // Permet d'avoir une réference sur l'input
   const inputRef = useRef(null);
+
+  // On reçoit les nouveaux messages quand le store est modifié
+  useEffect(() => {
+    receiveMessage();
+  }, [messages]);
 
   // Permet d'avoir le focus sur l'input
   // au chargement de la page
@@ -24,6 +29,9 @@ const Form = ({ sendMessage }) => {
     event.preventDefault();
     if (inputValue.trim() !== '') {
       sendMessage(inputValue);
+      // On envoie le store mise à jour via socket.io
+      // aux autres clients connéctés
+      emitMessage();
       setInputValue('');
     }
   };
@@ -50,11 +58,14 @@ const Form = ({ sendMessage }) => {
           <TelegramIcon />
         </button>
       </form>
-    </div >
+    </div>
   );
 };
 
 Form.propTypes = {
   sendMessage: PropTypes.func.isRequired,
+  emitMessage: PropTypes.func.isRequired,
+  receiveMessage: PropTypes.func.isRequired,
+  messages: PropTypes.array.isRequired,
 };
 export default Form;

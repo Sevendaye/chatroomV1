@@ -61,6 +61,13 @@ const reducer = (state = initialState, action = {}) => {
           display: false,
         },
       };
+    case actions.POPULATE_MESSAGES:
+      return {
+        ...state,
+        messages: [
+          ...action.payload,
+        ],
+      };
     default:
       return state;
   }
