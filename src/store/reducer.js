@@ -4,6 +4,7 @@ import * as actions from './actions';
 
 const initialState = {
   author: 'Toto',
+  currentMessage: '',
   messages: [],
   settings: {
     user_email: '',
@@ -18,6 +19,7 @@ const reducer = (state = initialState, action = {}) => {
     case actions.SEND_MESSAGE:
       return {
         ...state,
+        currentMessage: action.message,
         messages: [
           ...state.messages,
           {
@@ -60,13 +62,6 @@ const reducer = (state = initialState, action = {}) => {
           ...state.settings,
           display: false,
         },
-      };
-    case actions.POPULATE_MESSAGES:
-      return {
-        ...state,
-        messages: [
-          ...action.payload,
-        ],
       };
     default:
       return state;

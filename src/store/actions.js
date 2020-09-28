@@ -5,9 +5,8 @@ export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
 export const CONNECT_USER = 'CONNECT_USER';
 export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 
-export const EMIT_MESSAGE = 'EMIT_MESSAGE';
-export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
-export const POPULATE_MESSAGES = 'POPULATE_MESSAGES';
+export const CONNECT_WEBSOCKET = 'CONNECT_WEBSOCKET';
+
 // Action creators
 
 export const sendMessage = (message) => ({
@@ -40,15 +39,6 @@ export const setLoadingState = ({ loading }) => ({
   loading,
 });
 
-export const emitMessage = () => ({
-  type: EMIT_MESSAGE,
-});
-
-export const receiveMessage = () => ({
-  type: RECEIVE_MESSAGE,
-});
-
-export const populateMessages = (payload) => ({
-  type: POPULATE_MESSAGES,
-  payload,
+export const connectWebSocket = () => ({
+  type: CONNECT_WEBSOCKET,
 });

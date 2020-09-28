@@ -1,24 +1,27 @@
 /* eslint-disable indent */
-import { EMIT_MESSAGE, RECEIVE_MESSAGE, populateMessages } from 'src/store/actions';
-import socket from '../socket';
+import {
+  CONNECT_WEBSOCKET,
+  SEND_MESSAGE,
+} from 'src/store/actions';
 
+let socket = null;
 const socketMiddleware = (store) => (next) => (action) => {
   switch (action.type) {
-    case EMIT_MESSAGE:
+    case CONNECT_WEBSOCKET:
       {
-        // On envoie le store mise à jour via socket.io
-        // aux autres clients connectés
-        socket.emit('addMessage', store.getState().messages);
+        console.debug('Connexion au serveur socket', action);
+        socket = window.io('http://localhost:3001');
         next(action);
         break;
       }
-    case RECEIVE_MESSAGE:
+    case SEND_MESSAGE:
       {
-        socket.on('sendAllMessages', (data) => {
-          // Lorsqu'on reçoit de nouveaux messages
-          // On met à jour le store
-          store.dispatch(populateMessages(data));
-        });
+        const { author, currentMessage } = store.getState();
+        const newMessage = {
+          author,
+          message: currentMessage,
+        };
+        socket.emit('send_message_from_client', newMessage);
         next(action);
         break;
       }
