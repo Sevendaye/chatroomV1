@@ -1,0 +1,3 @@
+# chatroomV1
+
+## Chatroom en React, utilisation de redux, socket.io, des middlewares...
