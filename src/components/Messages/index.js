@@ -17,7 +17,7 @@ const Messages = ({ messages }) => {
         <Message
           key={`mes-${message.id}`}
           messageAuthor={message.author}
-          messageBody={message.body}
+          messageBody={message.message}
           owner={message.owner}
         />
       ))}
@@ -29,7 +29,7 @@ Messages.propTypes = {
   messages: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      body: PropTypes.string.isRequired,
+      message: PropTypes.string.isRequired,
     }),
   ).isRequired,
 };

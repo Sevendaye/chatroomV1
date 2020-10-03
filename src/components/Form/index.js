@@ -1,12 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import TelegramIcon from '@material-ui/icons/Telegram';
 
 import './form.scss';
 
-const Form = ({ sendMessage }) => {
-  const [inputValue, setInputValue] = useState('');
-
+const Form = ({ sendMessage, changeMessage, inputValue, author }) => {
   // Permet d'avoir une réference sur l'input
   const inputRef = useRef(null);
 
@@ -17,21 +15,19 @@ const Form = ({ sendMessage }) => {
   }, [inputRef]);
 
   const handleChange = (event) => {
-    setInputValue(event.target.value);
+    changeMessage(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
     if (inputValue.trim() !== '') {
-      sendMessage(inputValue);
-      setInputValue('');
+      sendMessage();
     }
   };
 
   const onSendMessage = () => {
     if (inputValue.trim() !== '') {
-      sendMessage(inputValue);
-      setInputValue('');
+      sendMessage();
     }
   };
 
@@ -41,12 +37,13 @@ const Form = ({ sendMessage }) => {
         <input
           type="text"
           name="input"
-          placeholder="Saisissez votre message..."
+          disabled={author === null}
+          placeholder={author === null ? 'Veuillez vous identifiez' : 'Saisissez votre message...'}
           value={inputValue}
           onChange={handleChange}
           ref={inputRef}
         />
-        <button onClick={onSendMessage} type="button">
+        <button type="button" disabled={author === null} onClick={onSendMessage}>
           <TelegramIcon />
         </button>
       </form>
@@ -56,5 +53,8 @@ const Form = ({ sendMessage }) => {
 
 Form.propTypes = {
   sendMessage: PropTypes.func.isRequired,
+  changeMessage: PropTypes.func.isRequired,
+  inputValue: PropTypes.string.isRequired,
+  author: PropTypes.string,
 };
 export default Form;

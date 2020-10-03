@@ -1,9 +1,8 @@
 /* eslint-disable indent */
-import getHighestId from 'src/selector/utils';
 import * as actions from './actions';
 
 const initialState = {
-  author: 'Toto',
+  author: null,
   currentMessage: '',
   messages: [],
   settings: {
@@ -16,19 +15,28 @@ const initialState = {
 
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case actions.SEND_MESSAGE:
+    case actions.ADD_MESSAGE:
       return {
         ...state,
-        currentMessage: action.message,
         messages: [
           ...state.messages,
           {
-            id: getHighestId(state.messages),
-            author: state.author,
-            body: action.message,
-            owner: true,
+            id: action.id,
+            author: action.author,
+            message: action.message,
+            owner: state.author === action.author,
           },
         ],
+      };
+    case actions.SEND_MESSAGE:
+      return {
+        ...state,
+        currentMessage: '',
+      };
+    case actions.CHANGE_MESSAGE:
+      return {
+        ...state,
+        currentMessage: action.message,
       };
     case actions.CHANGE_FIELD_VALUE:
       return {

@@ -7,7 +7,7 @@ import { X } from 'react-feather';
 
 import './settings.scss';
 
-const Settings = ({ settingsHidden, loading, submitLogin, toggleSettingsHidden }) => {
+const Settings = ({ settingsHidden, loading, author, submitLogin, toggleSettingsHidden }) => {
   const handleConnection = (event) => {
     event.preventDefault();
     submitLogin();
@@ -30,7 +30,7 @@ const Settings = ({ settingsHidden, loading, submitLogin, toggleSettingsHidden }
             type="password"
             placeholder="Mot de passe"
           />
-          <button type="submit" disabled={loading} onClick={handleConnection}>
+          <button type="submit" disabled={loading || author !== null} onClick={handleConnection}>
             {loading ? 'Chargement...' : 'Envoyer'}
           </button>
         </form>

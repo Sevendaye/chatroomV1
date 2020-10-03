@@ -1,4 +1,6 @@
+export const ADD_MESSAGE = 'ADD_MESSAGE';
 export const SEND_MESSAGE = 'SEND MESSAGE';
+export const CHANGE_MESSAGE = 'CHANGE_MESSAGE';
 export const CHANGE_FIELD_VALUE = 'CHANGE_FIELD_VALUE';
 export const CHANGE_SETTINGS_HIDDEN = 'CHANGE_SETTINGS_HIDDEN';
 export const SUBMIT_LOGIN = 'SUBMIT_LOGIN';
@@ -8,15 +10,24 @@ export const SET_LOADING_STATE = 'SET_LOADING_STATE';
 export const CONNECT_WEBSOCKET = 'CONNECT_WEBSOCKET';
 
 // Action creators
-
-export const sendMessage = (message) => ({
-  type: SEND_MESSAGE,
+export const addMessage = (id, author, message) => ({
+  type: ADD_MESSAGE,
+  id,
+  author,
   message,
 });
 
-export const toggleSettingsHidden = (hidden) => ({
+export const sendMessage = () => ({
+  type: SEND_MESSAGE,
+});
+
+export const changeMessage = (message) => ({
+  type: CHANGE_MESSAGE,
+  message,
+});
+
+export const toggleSettingsHidden = () => ({
   type: CHANGE_SETTINGS_HIDDEN,
-  hidden,
 });
 
 export const changeFieldValue = (name, value) => ({
@@ -34,7 +45,7 @@ export const connectUser = ({ pseudo }) => ({
   pseudo,
 });
 
-export const setLoadingState = ({ loading }) => ({
+export const setLoadingState = (loading) => ({
   type: SET_LOADING_STATE,
   loading,
 });

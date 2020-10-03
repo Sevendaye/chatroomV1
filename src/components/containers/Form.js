@@ -1,12 +1,16 @@
 import Form from 'src/components/Form';
 import { connect } from 'react-redux';
 
-import { sendMessage } from 'src/store/actions';
+import { sendMessage, changeMessage } from 'src/store/actions';
 
-const mapStateToProps = null;
+const mapStateToProps = (state) => ({
+  inputValue: state.currentMessage,
+  author: state.author,
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  sendMessage: (message) => dispatch(sendMessage(message)),
+  sendMessage: () => dispatch(sendMessage()),
+  changeMessage: (message) => dispatch(changeMessage(message)),
 
 });
 

@@ -6,6 +6,7 @@ import { toggleSettingsHidden, setLoadingState, submitLogin } from 'src/store/ac
 const mapStateToProps = (state) => ({
   settingsHidden: state.settings.display,
   loading: state.settings.loading,
+  author: state.author,
 });
 
 const mapDispatchToProps = (dispatch) => ({
